@@ -2,7 +2,8 @@
 /*UC4:Add Form Validations*/
 
 window.addEventListener("DOMContentLoaded", (event) => {
-
+    
+     /*UC7 added*/
      ValidateName();
     ValidatePhoneNumber();
     ValidateAddress();
@@ -13,7 +14,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         element.textContent = value;*/
     });
 
-    const ValidateName= () =>{
+    const ValidateName= () =>{        /*UC7 added*/
     const name = document.querySelector("#name");
     name.addEventListener("input", function () {
     if (name.value.length == 0) {
@@ -29,7 +30,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   };
 
-   const ValidateAddress=()=>{
+   const ValidateAddress=()=>{              /*UC7 added*/
     const address = document.querySelector("#address");
     address.addEventListener("input", function () {
     if (address.value.length == 0) {
@@ -45,7 +46,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
-   const validateZipcode=()=>{   
+   const validateZipcode=()=>{                     /*UC7 added*/
     const zip = document.querySelector("#zip");
     zip.addEventListener("input", function () {
     if (zip.value.length == 0) {
@@ -62,7 +63,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   };
 
 
-  const ValidatePhoneNumber=()=>{  
+  const ValidatePhoneNumber=()=>{                          /*UC7 added*/
     const phoneNumber = document.querySelector("#phoneNumber");
     phoneNumber.addEventListener("input", function () {
     if (phoneNumber.value.length == 0) {
@@ -83,8 +84,29 @@ window.addEventListener("DOMContentLoaded", (event) => {
 // <!-- UC-6 - On clicking Submit Button to the following:  -->
 
 function save() {
-    let contact = new AddressBook();
-    contact.id = Math.random();
+   
+    try{
+        let contact=createContact();
+        console.log(contact);
+        createAndUpdateStorage(contact);
+    }
+    catch(error){
+        alert(error);
+    }
+};
+
+const createContact=()=>{
+    let contact= new AddressBook();
+    contact.id=id();
+    function id(){
+        var id=Math.floor(Math.random()*100);
+        if(JSON.parse(localStorage.getItem("ContactList")).find(x =>x.id === id)){
+            id();
+        }else{
+            return id;  
+        }
+    }
+
 
     try {
     contact.name = getInputValueById("#name");
@@ -128,8 +150,10 @@ function save() {
     throw error;
     }
 
-    console.log(contact.toString());
-}
+    /*console.log(contact.toString());*/
+    alert(contact.toString());
+    return contact;
+};
 
 const setTextValue = (id, value) => {
     const element = document.querySelector(id);
