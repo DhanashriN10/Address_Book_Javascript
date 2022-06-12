@@ -41,6 +41,7 @@
 			   <legend><b>Full Name</b></legend>
 				
 				<input class="input" type="text" id="name"  name="name" required>
+					<error-output class="text-error" for="text"></error-output>
 				 </fieldset>
 		</div>
 
@@ -49,7 +50,8 @@
        <br>
 
 		<div class="row-content">
-		       <textarea id="notes" class="input" name="Address" placeholder="Address" style="height: 100px"></textarea>
+		       <textarea id="address" class="input" type="text" name="address" placeholder="Address" style="height: 100px"></textarea>
+		           <error-output class="address-error" for="text"></error-output>
 	    </div>
 	    <br><br>
 
@@ -70,25 +72,27 @@
 				<option value="Madhya Pradesh">Madhya Pradesh</option>
 				<option value="NKarnataka">Karnataka</option>
 			</select>
-			<select id="code" name="Zip Code">
-				<option>Select Zip Code</option>
-				<option value="424002">424002</option>
-				<option value="606589">606589</option>
-				<option value="789654">789654</option>
-				<option value="101919">101919</option>
-			</select>
+			<br>
+			<br>
+			
+            <input type="text" class="input zipcode" id="zip" name="zip" placeholder="Your Zipcode..." required>
+            <error-output class="zip-error"></error-output>
+             
+    
+   
 		</div>
 	</div>
 	<br><br>
 
 	<div>
 				
-		<input class="input" type="text" id="name"  name="Phone Number" placeholder="Phone Number" required>
+		<input class="input" type="text" id="phone"  name="Phone Number" placeholder="Phone Number" required>
+		<error-output class="text-error" for="text"></error-output>
 				 
 	</div>
-
-
-
+    <!--Add Form Validations-->
+     <script src="C:\Users\91992\Documents\HTML\Address Book\Javascript\address.js"></script>
+      <script src="C:\Users\91992\Documents\HTML\Address Book\Javascript\book.js"></script>
 
    </div>
 	
