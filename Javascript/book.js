@@ -1,77 +1,76 @@
 
 /*UC4:Add Form Validations*/
 
-    window.addEventListener('DOMContentLoaded',(event)=>{
-        const name=document.querySelector('#name');
-        const textError=document.querySelector('.text-error');
-        name.addEventListener('input',function(){
-            if (name.value.length==0){
-                textError.textContent=="";
-                return;
-            }
-            try{
-                (new AddressBook()).name=name.value;
-                textError.textContent="";
-            }
-            catch(e){
-                textError.textContent=e;
-            }
-        })
+window.addEventListener("DOMContentLoaded", (event) => {
+
+    const setTextValue = (id, value) => {
+        const element = document.querySelector(id);
+        element.textContent = value;
+    };
+
+    const name = document.querySelector("#name");
+    name.addEventListener("input", function () {
+    if (name.value.length == 0) {
+        setTextValue(".name-error", "");
+        return;
+    }
+    try {
+        new AddressBook().name = name.value;
+        setTextValue(".name-error", "");
+    } catch (error) {
+        setTextValue(".name-error", error);
+    }
     });
 
-   const address=document.querySelector("#address");
-   const textError=document.querySelector('.text-error');
-   address.addEventListener('input',function(){
-    if (address.value.length==0) {
-        textError.textContent=="";
+    const address = document.querySelector("#address");
+    address.addEventListener("input", function () {
+    if (address.value.length == 0) {
+        setTextValue(".address-error", "");
         return;
     }
-    try{
-        new AddressBook().address=address.value;
-        textError.textContent="";
+    try {
+        new AddressBook().address = address.value;
+        setTextValue(".address-error", "");
+    } catch (error) {
+        setTextValue(".address-error", error);
     }
-    catch(e){
-        textError.textContent=e;
-    }
-   }) ;
+    });
 
-
-    const zip=document.querySelector("#zip");
-   zip.addEventListener('input',function(){
-    if (zip.value.length==0) {
-        textError.textContent=="";
+    const zip = document.querySelector("#zip");
+    zip.addEventListener("input", function () {
+    if (zip.value.length == 0) {
+        setTextValue(".zip-error", "");
         return;
     }
-    try{
-        new AddressBook().zip=zip.value;
-        textError.textContent="";
+    try {
+        new AddressBook().zip = zip.value;
+        setTextValue(".zip-error", "");
+    } catch (error) {
+        setTextValue(".zip-error", error);
     }
-    catch(e){
-        textError.textContent=e;
-    }
-   }) ;
+    });
 
-
-    const phone=document.querySelector("#phone");
-    phone.addEventListener('input',function(){
-    if (phone.value.length==0) {
-        textError.textContent=="";
+    
+    const phoneNumber = document.querySelector("#phoneNumber");
+    phoneNumber.addEventListener("input", function () {
+    if (phoneNumber.value.length == 0) {
+        setTextValue(".tel-error", "");
         return;
     }
-    try{
-        new AddressBook().phone=phone.value;
-        textError.textContent="";
+    try {
+        new AddressBook().phoneNumber = phoneNumber.value;
+        setTextValue(".tel-error", "");
+    } catch (error) {
+        setTextValue(".tel-error", error);
     }
-    catch(e){
-        textError.textContent=e;
-    }
-   }) ;
+    });
 
+});
 
-    // <!-- UC-6 - On clicking Submit Button to the following:  -->
+// <!-- UC-6 - On clicking Submit Button to the following:  -->
 
 function save() {
-    let contact = new Contact();
+    let contact = new AddressBook();
     contact.id = Math.random();
 
     try {
@@ -82,9 +81,9 @@ function save() {
     }
 
     try {
-    contact.phone = getInputValueById("#phone");
+    contact.phoneNumber = getInputValueById("#phoneNumber");
     } catch (error) {
-    setTextValue(".phone-error", error);
+    setTextValue(".tel-error", error);
     throw error;
     }
 

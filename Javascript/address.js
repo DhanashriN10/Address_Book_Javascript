@@ -52,7 +52,7 @@ class AddressBook{
     	return this._zip;
     }
     set zip(zip){
-        let zipRegex=RegExp("^[0-9]{3}\\s{0,1}[0,9]{3}$");
+        let zipRegex=RegExp("^[0-9]{6}$");
         if (zipRegex.test(zip)) {
     	    this._zip=zip;
         }
@@ -61,22 +61,21 @@ class AddressBook{
         }
     }
 
-     get phone(){
-    	return this._phone;
+     
+    get phoneNumber() {
+    return this._phoneNumber;
     }
-    set phone(phone){
-        let phoneRegex=RegExp("^[0,9]{2}\\s{1}[7-9]{1}[0-9]{9}$");
-        if(phoneRegex.test(phone)){
-            this._phone=phone;
-        }
-        else{
-            throw "Phone Number is Incorrect";
-        }
-    	
+    set phoneNumber(phoneNumber) {
+    let phoneNumberRegex = RegExp("^[0-9]{2}\\s{1}[7-9]{1}[0-9]{9}$");
+    if (phoneNumberRegex.test(phoneNumber)) {
+        this._phoneNumber = phoneNumber;
+    } else {
+        throw "Phone Number is Invalid!";
+    }   
     }
 
     toString(){
-return "Id = " + this.id + ", Name = " + this.name + ", Address = " + this.address + ", City = " + this.city + ", state = " + this.state + ", zip = " + this.zip + ", phone Number = " + this.phone};
+return "Id = " + this.id + ", Name = " + this.name + ", Address = " + this.address + ", City = " + this.city + ", state = " + this.state + ", zip = " + this.zip + ", phone Number = " + this.phoneNumber};
 
 
 }
