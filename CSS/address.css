@@ -176,6 +176,13 @@ select {
 }
 
 
+error-output {
+    margin-left: px;
+    font-size: 16px;
+    font-style: italic;
+    color: red;
+}
+
 
 .buttons-contact {
     margin-top: 30px;

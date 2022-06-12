@@ -3,11 +3,17 @@
 
 window.addEventListener("DOMContentLoaded", (event) => {
 
-    const setTextValue = (id, value) => {
-        const element = document.querySelector(id);
-        element.textContent = value;
-    };
+     ValidateName();
+    ValidatePhoneNumber();
+    ValidateAddress();
+    validateZipcode();
 
+    /*const setTextValue = (id, value) => {
+        const element = document.querySelector(id);
+        element.textContent = value;*/
+    });
+
+    const ValidateName= () =>{
     const name = document.querySelector("#name");
     name.addEventListener("input", function () {
     if (name.value.length == 0) {
@@ -21,7 +27,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         setTextValue(".name-error", error);
     }
     });
+  };
 
+   const ValidateAddress=()=>{
     const address = document.querySelector("#address");
     address.addEventListener("input", function () {
     if (address.value.length == 0) {
@@ -35,7 +43,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         setTextValue(".address-error", error);
     }
     });
+  }
 
+   const validateZipcode=()=>{   
     const zip = document.querySelector("#zip");
     zip.addEventListener("input", function () {
     if (zip.value.length == 0) {
@@ -49,8 +59,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         setTextValue(".zip-error", error);
     }
     });
+  };
 
-    
+
+  const ValidatePhoneNumber=()=>{  
     const phoneNumber = document.querySelector("#phoneNumber");
     phoneNumber.addEventListener("input", function () {
     if (phoneNumber.value.length == 0) {
@@ -65,7 +77,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     });
 
-});
+/*});*/
+};
 
 // <!-- UC-6 - On clicking Submit Button to the following:  -->
 
